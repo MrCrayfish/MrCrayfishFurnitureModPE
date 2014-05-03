@@ -1,5 +1,5 @@
- /**
-  * MrCrayfish’s Furniture Mod PE
+/**
+  * MrCrayfishâ€™s Furniture Mod PE
   * Copyright (C) 2014 MrCrayfish
   *
   * This program is free software; you can redistribute it and/or modify
@@ -37,6 +37,7 @@ var greenCouchID = 235;
 var brownCouchID = 234;
 var redCouchID = 233;
 var blackCouchID = 232;
+
 var lampID = 231;
 var ovenID = 230;
 var ovenRangehoodID = 229;
@@ -69,6 +70,15 @@ var black = ["wool", 15];
 
 var cob = ["cobblestone", 0];
 var ironb = ["iron_block", 0];
+
+var sides = [
+[0, -1, 0],
+[0, 1, 0],
+[0, 0, -1],
+[0, 0, 1],
+[-1, 0, 0],
+[1, 0, 0]
+];
 
 /** Blocks */
 
@@ -157,23 +167,40 @@ Item.addCraftRecipe(500, 1, 0, [3, 1, 0]);
 
 function useItem(x, y, z, itemId, blockId, side)
 {
-    var yOffset = 1;
-    if(getTile(x, y, z) == 78)
-    {
-		yOffset = 0;
-    }
+     var dir = sides[side];
 	var player = getPlayerEnt();
-	var rotation = (((getYaw(player) * 4) / 360) + 0.5) & 3;
+	var rotation  = getRealData();
 	
 	for (var i = 0; i < itemDataInfo.length; i++)
 	{
 		var data = itemDataInfo[i];
 		if(data.itemId == itemId)
 		{
-			Level.setTile(x, y + yOffset, z, data.blockId, rotation);
+               Player.swingArm();
+
+               // Does not work, requires BlockLauncher bug fix
+               blockPlaceSound(data.blockId, x + dir[0], y + dir[1], x + dir[2]);
+			Level.setTile(x + dir[0], y + dir[1], z + dir[2], data.blockId, rotation);
 			break;
 		}
 	}
+}
+
+function getRealData() {
+        switch(Player.getDataFromYaw() & 3) {
+            case 0:
+                return 2;
+                break;
+            case 1:
+                return 5;
+                break;
+            case 2:
+                return 3;
+                break;
+            case 3:
+                return 4;
+                break;
+        }
 }
 
 /** Render Handler */
@@ -588,4 +615,9 @@ function getMetadata(x, y, z, metadata, rotation)
 	}
 	return 0;
 }
-			
+
+function blockPlaceSound(block, x, y, z) {
+    if(block == 237 || block == 241 || block == 242 || block == 243) Level.playSound(x, y, z, "step.wood", 1, 1);
+    if(block == 240 || block == 239 || block == 238) Level.playSound(x, y, z, "step.stone", 1, 1);
+    if(block == 232 || block == 233 || block == 234 || block == 235 || block == 236) Level.playSound(x, y, z, "step.wool", 1, 1);
+}
