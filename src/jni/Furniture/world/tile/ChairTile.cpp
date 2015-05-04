@@ -11,7 +11,7 @@ ChairTile::ChairTile(int id, Material const* material) : FurnitureTiles(id, mate
 	(isWood())? setSoundType(Tile::SOUND_WOOD) : setSoundType(Tile::SOUND_STONE);
 	renderType = FurnitureShape::CHAIR;
 	Tile::solid[id] = false;
-	//setLightBlock(Brightness::MIN);
+	Tile::lightBlock[id] = 0;
 }
 
 bool ChairTile::isWood() {

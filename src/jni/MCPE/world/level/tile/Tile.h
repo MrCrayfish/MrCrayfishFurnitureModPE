@@ -56,7 +56,7 @@ public:
 	static Tile* tiles[256];
 	static bool solid[256];
 	static float translucency[256];
-	static Brightness lightBlock[256];
+	static uint_fast8_t lightBlock[256];
 
 	static const Tile::SoundType SOUND_NORMAL;
 	static const Tile::SoundType SOUND_WOOD;
