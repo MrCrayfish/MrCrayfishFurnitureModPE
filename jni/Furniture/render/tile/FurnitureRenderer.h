@@ -8,6 +8,7 @@
 #include "../../world/tile/FurnitureTiles.h"
 #include "../../world/tile/WoodenTableTile.h"
 #include "../../world/tile/StoneTableTile.h"
+#include "../../world/tile/CabinetTile.h"
 #include "FurnitureShape.h"
 
 
@@ -17,6 +18,7 @@ public:
 
 	static void renderTable(TileTessellator*, TableTile*, const TilePos&);
 	static void renderChair(TileTessellator*, Tile*, const TilePos&);
+static void renderCabinet(TileTessellator*, CabinetTile*, const TilePos&);
 
 private:
 	static TileSource* region;

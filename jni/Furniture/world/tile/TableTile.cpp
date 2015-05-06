@@ -1,5 +1,8 @@
 #include "TableTile.h"
 
+int TableTile::_woodId = 200;
+int TableTile::_stoneId = 201;
+
 TableTile::TableTile(int id, Material const* material) : FurnitureTiles(id, material) {
 	renderType = FurnitureShape::TABLE;
 	Tile::solid[id] = false;
