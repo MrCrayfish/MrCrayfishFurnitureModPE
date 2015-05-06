@@ -4,5 +4,6 @@
 
 class WoodenTableTile : public TableTile {
 public:
+static int _id;
     WoodenTableTile(int);
 };

@@ -12,6 +12,9 @@ void FurnitureRenderer::render(TileTessellator* tess, TileSource* region, Tile* 
 	case FurnitureShape::CHAIR:
 		renderChair(tess, tile, pos);
 		break;
+	case FurnitureShape::CABINET:
+		renderCabinet(tess, (CabinetTile*) tile, pos);
+		break;
 	default:
 		tess->tessellateBlockInWorld(tile, pos);
 	}
@@ -114,3 +117,25 @@ void FurnitureRenderer::renderChair(TileTessellator* tess, Tile* tile, const Til
 
 	tess->useForcedUV = false;
 }
+
+void FurnitureRenderer::renderCabinet(TileTessellator* tess, CabinetTile* tile, const TilePos& pos) {
+        tess->useForcedUV = false;
+        int x = pos.x, y = pos.y, z = pos.z;
+        tess->setRenderBounds(0, 0, 0, 1, 1, 1);
+        tess->tessellateBlockInWorld(tile, {x, y, z});
+        tess->useForcedUV = true;
+        tess->forcedUV = tile->getTextureUVCoordinateSet("planks", 1);
+        tess->setRenderBounds(0.0625, 0.0625, 1, 0.9375, 0.9375, 1.05);
+        tess->tessellateBlockInWorld(tile, {x, y, z});
+        tess->forcedUV = tile->getTextureUVCoordinateSet("iron_block", 0);
+        tess->setRenderBounds(0.125, 0.375, 1.05, 0.1875, 0.75, 1.1);
+        tess->tessellateBlockInWorld(tile, {x, y, z});
+        tess->setRenderBounds(0.1875, 0.375, 1.05, 0.25, 0.4375, 1.1);
+        tess->tessellateBlockInWorld(tile, {x, y, z});
+        
+        tess->setRenderBounds(0.1875, 0.6875, 1.05, 0.25, 0.75, 1.1);
+        tess->tessellateBlockInWorld(tile, {x, y, z});
+        
+        tess->useForcedUV = false;
+}
+

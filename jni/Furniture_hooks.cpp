@@ -16,9 +16,11 @@ class Tessellator;
 
 #include "Furniture/world/tile/TableTile.h"
 #include "Furniture/world/tile/ChairTile.h"
+#include "Furniture/world/tile/CabinetTile.h"
 
 #include "Furniture/world/item/TableItem.h"
 #include "Furniture/world/item/ChairItem.h"
+#include "Furniture/world/item/CabinetItem.h"
 
 #define LOG_TAG "furniturepe"
 #define LOGI(...) ((void)__android_log_print(ANDROID_LOG_INFO, LOG_TAG, __VA_ARGS__))
@@ -41,6 +43,8 @@ void initTileItems() {
     FurnitureTileItems::tileItemTableStone = new FurnitureTileItems(StoneTableTile::_id);
     FurnitureTileItems::tileItemChairWood = new FurnitureTileItems(ChairTile::_woodId);
     FurnitureTileItems::tileItemChairStone = new FurnitureTileItems(ChairTile::_stoneId);
+
+FurnitureTileItems::tileItemCabinet = new FurnitureTileItems(CabinetTile::_id);
 }
 
 static void (*_Tile$initTiles)();
@@ -51,6 +55,7 @@ static void Tile$initTiles() {
     FurnitureTiles::tileTableStone = new StoneTableTile(StoneTableTile::_id);
     FurnitureTiles::tileChairWood = new ChairTile(ChairTile::_woodId, &Material::wood);
     FurnitureTiles::tileChairStone = new ChairTile(ChairTile::_stoneId, &Material::stone);
+FurnitureTiles::tileCabinet = new CabinetTile(CabinetTile::_id, &Material::wood);
 
     initTileItems();
 }
@@ -61,7 +66,7 @@ static void Item$initItems() {
     FurnitureItems::itemTableStone = new TableItem(TableItem::_stoneId, "itemTableStone", false);
     FurnitureItems::itemChairWood = new ChairItem(ChairItem::_woodId, "itemChairWood", true);
     FurnitureItems::itemChairStone = new ChairItem(ChairItem::_stoneId, "itemChairStone", false);
-
+FurnitureItems::itemCabinet = new CabinetItem(CabinetItem::_id, "itemCabinet");
     _Item$initItems();
 }
 
@@ -73,6 +78,8 @@ static void Item$initCreativeItems() {
     Item::addCreativeItem(FurnitureItems::itemTableStone, 0);
     Item::addCreativeItem(FurnitureItems::itemChairWood, 0);
     Item::addCreativeItem(FurnitureItems::itemChairStone, 0);
+
+Item::addCreativeItem(FurnitureItems::itemCabinet, 0);
 }
 
 
