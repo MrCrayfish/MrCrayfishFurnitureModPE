@@ -11,7 +11,8 @@ public:
 	static FurnitureItems* itemTableStone;
 	static FurnitureItems* itemChairWood;
 	static FurnitureItems* itemChairStone;
-
+	static FurnitureItems* itemCabinet;
+	
 	static TextureAtlas* _atlas;
 	
 	static std::map<std::string, std::string> textureConverter;

@@ -4,6 +4,7 @@ FurnitureItems* FurnitureItems::itemTableWood = NULL;
 FurnitureItems* FurnitureItems::itemTableStone = NULL;
 FurnitureItems* FurnitureItems::itemChairWood = NULL;
 FurnitureItems* FurnitureItems::itemChairStone = NULL;
+FurnitureItems* FurnitureItems::itemCabinet = NULL;
 
 TextureAtlas* FurnitureItems::_atlas = NULL;
 
@@ -16,7 +17,7 @@ FurnitureItems::FurnitureItems(int id) : Item(id - 256) {
 }
 
 void FurnitureItems::setIcon(std::string const& name, int index) {
-	Item::setIcon(textureConverter[name], getTextureIndex());
+	Item::setIcon(textureConverter[name], index);
 }
 
 int FurnitureItems::getTextureIndex() {
@@ -29,4 +30,5 @@ void FurnitureItems::registerTextures() {
 	textureConverter["itemTableStone"] = "apple_golden";
     textureConverter["itemChairWood"] = "arrow";
     textureConverter["itemChairStone"] = "axe";
+	textureConverter["itemCabinet"] = "axe"; //omg its the same as stone chair
 }

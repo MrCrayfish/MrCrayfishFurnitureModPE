@@ -16,9 +16,11 @@ class Tessellator;
 
 #include "Furniture/world/tile/TileTable.h"
 #include "Furniture/world/tile/TileChair.h"
+#include "Furniture/world/tile/TileCabinet.h"
 
 #include "Furniture/world/item/TableItem.h"
 #include "Furniture/world/item/ChairItem.h"
+#include "Furniture/world/item/ItemCabinet.h"
 
 #include "MCPE/language/I18n.h"
 
@@ -43,6 +45,7 @@ void initTileItems() {
     FurnitureTileItems::tileItemTableStone = new FurnitureTileItems(TileTable::_stoneId);
     FurnitureTileItems::tileItemChairWood = new FurnitureTileItems(TileChair::_woodId);
     FurnitureTileItems::tileItemChairStone = new FurnitureTileItems(TileChair::_stoneId);
+    FurnitureTileItems::tileItemCabinet = new FurnitureTileItems(TileCabinet::_id);
 }
 
 static void (*_Tile$initTiles)();
@@ -53,7 +56,8 @@ static void Tile$initTiles() {
     FurnitureTiles::tileTableStone = new TileTable(TileTable::_stoneId, &Material::stone);
     FurnitureTiles::tileChairWood = new TileChair(TileChair::_woodId, &Material::wood);
     FurnitureTiles::tileChairStone = new TileChair(TileChair::_stoneId, &Material::stone);
-
+    FurnitureTiles::tileCabinet = new TileCabinet(TileCabinet::_id, &Material::wood);
+	
     initTileItems();
 }
 
@@ -63,7 +67,8 @@ static void Item$initItems() {
     FurnitureItems::itemTableStone = new TableItem(TableItem::_stoneId, "itemTableStone", false);
     FurnitureItems::itemChairWood = new ChairItem(ChairItem::_woodId, "itemChairWood", true);
     FurnitureItems::itemChairStone = new ChairItem(ChairItem::_stoneId, "itemChairStone", false);
-
+    FurnitureItems::itemCabinet = new ItemCabinet(ItemCabinet::_id, "itemCabinet");
+	
     _Item$initItems();
 }
 
@@ -75,6 +80,7 @@ static void Item$initCreativeItems() {
     Item::addCreativeItem(FurnitureItems::itemTableStone, 0);
     Item::addCreativeItem(FurnitureItems::itemChairWood, 0);
     Item::addCreativeItem(FurnitureItems::itemChairStone, 0);
+	Item::addCreativeItem(FurnitureItems::itemCabinet, 0);
 }
 
 static std::string (*_I18n$get)(std::string const&, std::vector<std::string,std::allocator<std::string>> const&);
