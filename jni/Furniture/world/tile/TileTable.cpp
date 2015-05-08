@@ -26,3 +26,10 @@ const TextureUVCoordinateSet& TileTable::getTexture(signed char side, int data) 
 bool TileTable::use(Player* player, int x, int y, int z) {
 	return false;
 }
+
+int TileTable::getResource(int data, Random* rand) {
+	if(isWood())
+		return TableItem::_woodId;
+	else 
+		return TableItem::_stoneId;
+}
