@@ -15,6 +15,8 @@ void FurnitureRenderer::render(TileTessellator* tess, TileSource* region, Tile* 
 	case FurnitureShape::CABINET:
 		renderCabinet(tess, (TileCabinet*)tile, pos);
 		break;
+	case FurnitureShape::DOORBELL:
+		renderDoorbell(tess, (TileDoorbell*)tile, pos);
 	default:
 		tess->tessellateBlockInWorld(tile, pos);
 	}
@@ -130,5 +132,17 @@ void FurnitureRenderer::renderCabinet(TileTessellator* tess, TileCabinet* tile, 
 	tess->setRenderBounds(0.1875, 0.6875, 1.05, 0.25, 0.75, 1.1);
 	tess->tessellateBlockInWorld(tile, {x, y, z});
 	
+	tess->useForcedUV = false;
+}
+
+void FurnitureRenderer::renderDoorbell(TileTessellator* tess, TileDoorbell* tile, const TilePos& pos) {
+	tess->useForcedUV = true;
+	int x = pos.x, y = pos.y, z = pos.z;
+	tess->forcedUV = tile->getTexture(0, 0);
+	tess->setRenderBounds(0.375, 0.25, 0, 0.625, 0.75, 0.1);
+	tess->tessellateBlockInWorld(tile, {x, y, z});
+	tess->forcedUV = tile->getTexture(1, 0);
+	tess->setRenderBounds(0.4375, 0.4375, 0.1, 0.5625, 0.5625, 0.15);
+	tess->tessellateBlockInWorld(tile, {x, y, z});
 	tess->useForcedUV = false;
 }

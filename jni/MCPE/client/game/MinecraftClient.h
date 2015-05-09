@@ -53,7 +53,7 @@ public:
 	virtual void init();
 	virtual void teardown();
 	virtual void selectLevel(const std::string &, const std::string &, const LevelSettings &);
-	virtual void setLevel(std::unique_ptr<Level> &, const std::string &, Player *);
+	virtual void setLevel(std::unique_ptr<Level> &, std::string const&, Player *);
 	virtual void startFrame();
 	virtual void updateGraphics();
 	virtual void endFrame();

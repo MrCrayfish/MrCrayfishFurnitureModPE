@@ -1,6 +1,7 @@
 #pragma once
 
 #include "MCPE/CommonTypes.h"
+#include "MCPE/world/level/Level.h"
 
 class TileSource {
 public:

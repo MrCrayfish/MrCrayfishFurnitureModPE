@@ -9,6 +9,7 @@
 #include "../../world/tile/TileTable.h"
 #include "../../world/tile/TileChair.h"
 #include "../../world/tile/TileCabinet.h"
+#include "../../world/tile/TileDoorbell.h"
 #include "FurnitureShape.h"
 
 
@@ -19,6 +20,7 @@ public:
 	static void renderTable(TileTessellator*, TileTable*, const TilePos&);
 	static void renderChair(TileTessellator*, TileChair*, const TilePos&);
 	static void renderCabinet(TileTessellator*, TileCabinet*, const TilePos&);
+	static void renderDoorbell(TileTessellator*, TileDoorbell*, const TilePos&);
 	
 private:
 	static TileSource* region;

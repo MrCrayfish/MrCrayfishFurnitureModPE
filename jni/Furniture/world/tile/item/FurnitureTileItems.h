@@ -9,6 +9,7 @@ public:
 	static FurnitureTileItems* tileItemChairWood;
 	static FurnitureTileItems* tileItemChairStone;
 	static FurnitureTileItems* tileItemCabinet;
+	static FurnitureTileItems* tileItemDoorbell;
 	
 	FurnitureTileItems(int id) : TileItem(id - 256){};
 };

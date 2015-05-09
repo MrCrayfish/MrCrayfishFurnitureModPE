@@ -12,6 +12,7 @@ public:
 	static FurnitureItems* itemChairWood;
 	static FurnitureItems* itemChairStone;
 	static FurnitureItems* itemCabinet;
+	static FurnitureItems* itemDoorbell;
 	
 	static TextureAtlas* _atlas;
 	
