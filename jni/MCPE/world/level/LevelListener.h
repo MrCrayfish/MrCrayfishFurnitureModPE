@@ -1,8 +1,8 @@
 #pragma once
 
-#include "../ParticleTypeEnum.h"
 #include "TileSourceListener.h"
 
+class ParticleType;
 class Mob;
 class Player;
 class Entity;

@@ -2,9 +2,8 @@
 
 #include <memory>
 #include <unordered_set>
-
-#include "../client/AppPlatformListener.h"
 #include "LevelListener.h"
+#include <MCPE/AppPlatformListener.h>
 
 class Minecraft;
 class LevelStorage;
