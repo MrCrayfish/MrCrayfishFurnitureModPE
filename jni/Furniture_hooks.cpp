@@ -59,9 +59,8 @@ static void Tile$initTiles() {
     FurnitureTiles::tileTableStone = new TileTable(TileTable::_stoneId, &Material::stone);
     FurnitureTiles::tileChairWood = new TileChair(TileChair::_woodId, &Material::wood);
     FurnitureTiles::tileChairStone = new TileChair(TileChair::_stoneId, &Material::stone);
-    FurnitureTiles::tileCabinet = new TileCabinet(TileCabinet::_id, &Material::wood);
     FurnitureTiles::tileDoorbell = new TileDoorbell(TileDoorbell::_id, &Material::wood);
-	
+	FurnitureEntityTiles::entityTileCabinet = new TileCabinet(TileCabinet::_id, &Material::wood);
     initTileItems();
 }
 
@@ -92,26 +91,28 @@ static void Item$initCreativeItems() {
 static std::string (*_I18n$get)(std::string const&, std::vector<std::string,std::allocator<std::string>> const&);
 
 static std::string I18n$get(std::string const& key, std::vector<std::string,std::allocator<std::string>> const& a) {
-	if(key == "item.itemTableWood.name") {
-		return "Wooden Table";
-	} else if(key == "item.itemTableStone.name") {
-		return "Stone Table";
-	} else if(key == "item.itemChairWood.name") {
-		return "Wooden Chair";
-	} else if(key == "item.itemChairStone.name") {
-		return "Stone Chair";
-	} else if(key == "item.itemCabinet.name") {
-		return "Cabinet";
-	} else if(key == "item.itemDoorbell.name") {
-		return "Doorbell";
-	} else if(key == "item.itemBedsideCabinet.name") {
-		return "Bedside Cabinet";
-	}
+	if(key == "item.itemTableWood.name") return "Wooden Table";
+	if(key == "item.itemTableStone.name") return "Stone Table";
+	if(key == "item.itemChairWood.name") return "Wooden Chair";
+	if(key == "item.itemChairStone.name") return "Stone Chair";
+	if(key == "item.itemCabinet.name") return "Cabinet";
+	if(key == "item.itemDoorbell.name") return "Doorbell";
+	if(key == "item.itemBedsideCabinet.name") return "Bedside Cabinet";
+
 	return _I18n$get(key, a);
-};
+}
+
+static TileEntity* (*_TileEntityFactory$createTileEntity)(TileEntityType, const TilePos&);
+static TileEntity* TileEntityFactory$createTileEntity(TileEntityType type, const TilePos& pos) {
+	if(type == TileEntityType::CABINET) return new CabinetTileEntity(pos);
+	
+	return _TileEntityFactory$createTileEntity(type, pos);
+}
 
 JNIEXPORT jint JNI_OnLoad(JavaVM* vm, void* reserved) {
 	FurnitureItems::registerTextures();
+
+	void* tileEntityFactory$createTileEntity = dlsym(RTLD_DEFAULT, "_ZN17TileEntityFactory16createTileEntityE14TileEntityTypeRK7TilePos");
 	
 	MSHookFunction((void*) &TileTessellator::tessellateInWorld, (void*) &TileTessellator$tessellateInWorld, (void**) &_TileTessellator$tessellateInWorld);
 	MSHookFunction((void*) &Touch::StartMenuScreen::render, (void*) &StartMenuScreen$render, (void**) &_StartMenuScreen$render);
@@ -119,6 +120,8 @@ JNIEXPORT jint JNI_OnLoad(JavaVM* vm, void* reserved) {
 	MSHookFunction((void*) &Tile::initTiles, (void*) &Tile$initTiles, (void**) &_Tile$initTiles);
 	MSHookFunction((void*) &Item::initCreativeItems, (void*) &Item$initCreativeItems, (void**) &_Item$initCreativeItems);
 	MSHookFunction((void*) &I18n::get, (void*) &I18n$get, (void**) &_I18n$get);
-	
+	MSHookFunction((void*)&TileEntity::initTileEntities, (void*)&TileEntity$initTileEntities, (void**)&_TileEntity$initEntities);
+    MSHookFunction(tileEntityFactory$createTileEntity, (void*)&TileEntityFactory$createTileEntity, (void**)&_TileEntityFactory$createTileEntity);
+
 	return JNI_VERSION_1_2;
 }
