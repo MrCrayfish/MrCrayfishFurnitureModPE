@@ -24,7 +24,8 @@ const TextureUVCoordinateSet& TileChair::getTexture(signed char side, int data) 
 }
 
 bool TileChair::use(Player* player, int x, int y, int z) {
-	return false;
+	//make it sittable
+	return true;
 }
 
 int TileChair::getResource(int data, Random* rand) {
@@ -32,4 +33,8 @@ int TileChair::getResource(int data, Random* rand) {
 		return ChairItem::_woodId;
 	else 
 		return ChairItem::_stoneId;
+}
+
+int TileChair::getResourceCount(Random* rand) {
+	return 1;
 }

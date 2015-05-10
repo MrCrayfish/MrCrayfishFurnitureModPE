@@ -5,6 +5,7 @@
 #include <substrate.h>
 
 class Tessellator;
+#include "MCPE/world/level/Level.h"
 #include "MCPE/world/level/tile/Tile.h"
 #include "MCPE/world/material/Material.h"
 #include "MCPE/client/renderer/tile/TileTessellator.h"
@@ -16,20 +17,24 @@ class Tessellator;
 
 #include "Furniture/world/tile/TileTable.h"
 #include "Furniture/world/tile/TileChair.h"
+#include "Furniture/world/tile/TileCabinet.h"
+#include "Furniture/world/tile/TileDoorbell.h"
 
 #include "Furniture/world/item/TableItem.h"
 #include "Furniture/world/item/ChairItem.h"
+#include "Furniture/world/item/ItemCabinet.h"
+#include "Furniture/world/item/ItemDoorbell.h"
 
 #include "MCPE/language/I18n.h"
 
 #define LOG_TAG "furniturepe"
 #define LOGI(...) ((void)__android_log_print(ANDROID_LOG_INFO, LOG_TAG, __VA_ARGS__))
 
-
 static void (*_TileTessellator$tessellateInWorld)(TileTessellator*, Tile*, const TilePos&, bool);
 static void TileTessellator$tessellateInWorld(TileTessellator* self, Tile* tile, const TilePos& pos, bool sth) {
     if(tile->renderType >= 100) FurnitureRenderer::render(self, self->region, tile, pos);
     _TileTessellator$tessellateInWorld(self, tile, pos, sth);
+	Level::level = self->region->getLevel();
 }
 
 static void (*_StartMenuScreen$render)(Touch::StartMenuScreen*, int, int, float);
@@ -43,6 +48,8 @@ void initTileItems() {
     FurnitureTileItems::tileItemTableStone = new FurnitureTileItems(TileTable::_stoneId);
     FurnitureTileItems::tileItemChairWood = new FurnitureTileItems(TileChair::_woodId);
     FurnitureTileItems::tileItemChairStone = new FurnitureTileItems(TileChair::_stoneId);
+    FurnitureTileItems::tileItemCabinet = new FurnitureTileItems(TileCabinet::_id);
+    FurnitureTileItems::tileItemDoorbell = new FurnitureTileItems(TileDoorbell::_id);
 }
 
 static void (*_Tile$initTiles)();
@@ -53,7 +60,9 @@ static void Tile$initTiles() {
     FurnitureTiles::tileTableStone = new TileTable(TileTable::_stoneId, &Material::stone);
     FurnitureTiles::tileChairWood = new TileChair(TileChair::_woodId, &Material::wood);
     FurnitureTiles::tileChairStone = new TileChair(TileChair::_stoneId, &Material::stone);
-
+    FurnitureTiles::tileCabinet = new TileCabinet(TileCabinet::_id, &Material::wood);
+    FurnitureTiles::tileDoorbell = new TileDoorbell(TileDoorbell::_id, &Material::wood);
+	
     initTileItems();
 }
 
@@ -63,7 +72,9 @@ static void Item$initItems() {
     FurnitureItems::itemTableStone = new TableItem(TableItem::_stoneId, "itemTableStone", false);
     FurnitureItems::itemChairWood = new ChairItem(ChairItem::_woodId, "itemChairWood", true);
     FurnitureItems::itemChairStone = new ChairItem(ChairItem::_stoneId, "itemChairStone", false);
-
+    FurnitureItems::itemCabinet = new ItemCabinet(ItemCabinet::_id, "itemCabinet");
+    FurnitureItems::itemDoorbell = new ItemDoorbell(ItemDoorbell::_id, "itemDoorbell");
+	
     _Item$initItems();
 }
 
@@ -75,6 +86,8 @@ static void Item$initCreativeItems() {
     Item::addCreativeItem(FurnitureItems::itemTableStone, 0);
     Item::addCreativeItem(FurnitureItems::itemChairWood, 0);
     Item::addCreativeItem(FurnitureItems::itemChairStone, 0);
+	Item::addCreativeItem(FurnitureItems::itemCabinet, 0);
+	Item::addCreativeItem(FurnitureItems::itemDoorbell, 0);
 }
 
 static std::string (*_I18n$get)(std::string const&, std::vector<std::string,std::allocator<std::string>> const&);
@@ -90,6 +103,10 @@ static std::string I18n$get(std::string const& key, std::vector<std::string,std:
 		return "Stone Chair";
 	} else if(key == "item.itemCabinet.name") {
 		return "Cabinet";
+	} else if(key == "item.itemDoorbell.name") {
+		return "Doorbell";
+	} else if(key == "item.itemBedsideCabinet.name") {
+		return "Bedside Cabinet";
 	}
 	return _I18n$get(key, a);
 };
@@ -103,7 +120,6 @@ JNIEXPORT jint JNI_OnLoad(JavaVM* vm, void* reserved) {
 	MSHookFunction((void*) &Tile::initTiles, (void*) &Tile$initTiles, (void**) &_Tile$initTiles);
 	MSHookFunction((void*) &Item::initCreativeItems, (void*) &Item$initCreativeItems, (void**) &_Item$initCreativeItems);
 	MSHookFunction((void*) &I18n::get, (void*) &I18n$get, (void**) &_I18n$get);
-
-
+	
 	return JNI_VERSION_1_2;
 }

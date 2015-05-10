@@ -2,5 +2,7 @@
 
 enum FurnitureShape {
 	TABLE = 100,
-	CHAIR
+	CHAIR,
+	CABINET,
+	DOORBELL
 };
