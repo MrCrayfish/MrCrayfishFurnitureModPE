@@ -2,7 +2,7 @@
 
 int TileCabinet::_id = 204;
 
-TileCabinet::TileCabinet(int id, Material const* material) : FurnitureEntityTiles(id, material) {
+TileCabinet::TileCabinet(int id, Material const* material) : FurnitureTiles(id, material) {
 	tex = getTextureUVCoordinateSet("planks", 2);
 	secondary_tex = getTextureUVCoordinateSet("planks", 1);
 	terciary_tex = getTextureUVCoordinateSet("iron_block", 0);
@@ -10,7 +10,6 @@ TileCabinet::TileCabinet(int id, Material const* material) : FurnitureEntityTile
 	setNameId("tileCabinet");
 	setSoundType(Tile::SOUND_WOOD);
 	renderType = FurnitureShape::CABINET;
-	tileEntityType = tileEntityType::CABINET;
 	//Tile::solid[id] = false;
 	Tile::lightBlock[id] = 0;
 }

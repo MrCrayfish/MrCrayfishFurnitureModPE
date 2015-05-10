@@ -3,7 +3,7 @@
 #include "FurnitureTiles.h"
 #include "../item/ItemCabinet.h"
 
-class TileCabinet : public FurnitureEntityTiles {
+class TileCabinet : public FurnitureTiles {
 public:
 	static int _id;
 	
