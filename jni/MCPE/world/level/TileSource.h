@@ -8,5 +8,5 @@ public:
 	FullTile getTile(int, int, int);
 	DataID getData(int, int, int);
 	bool setTileAndData(int, int, int, FullTile, int);
-	Level* getLevel();
+	Level* getLevel() const;
 };

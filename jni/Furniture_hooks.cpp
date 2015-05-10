@@ -34,6 +34,7 @@ static void (*_TileTessellator$tessellateInWorld)(TileTessellator*, Tile*, const
 static void TileTessellator$tessellateInWorld(TileTessellator* self, Tile* tile, const TilePos& pos, bool sth) {
     if(tile->renderType >= 100) FurnitureRenderer::render(self, self->region, tile, pos);
     _TileTessellator$tessellateInWorld(self, tile, pos, sth);
+	Level::level = self->region->getLevel();
 }
 
 static void (*_StartMenuScreen$render)(Touch::StartMenuScreen*, int, int, float);

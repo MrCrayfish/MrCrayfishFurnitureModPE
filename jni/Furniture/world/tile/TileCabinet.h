@@ -11,6 +11,7 @@ public:
 
 	virtual const TextureUVCoordinateSet& getTexture(signed char, int);
 	virtual int getResource(int, Random*);
+	virtual int getResourceCount(Random*);
 	virtual bool use(Player*, int, int, int);
 	
 private:

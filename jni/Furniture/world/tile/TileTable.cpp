@@ -33,3 +33,7 @@ int TileTable::getResource(int data, Random* rand) {
 	else 
 		return TableItem::_stoneId;
 }
+
+int TileTable::getResourceCount(Random* rand) {
+	return 1;
+}

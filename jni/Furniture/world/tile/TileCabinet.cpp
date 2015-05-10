@@ -19,9 +19,13 @@ const TextureUVCoordinateSet& TileCabinet::getTexture(signed char side, int data
 }
 
 bool TileCabinet::use(Player* player, int x, int y, int z) {
-	return false;
+	return true;
 }
 
 int TileCabinet::getResource(int data, Random* rand) {
 	return ItemCabinet::_id;
+}
+
+int TileCabinet::getResourceCount(Random* rand) {
+	return 1;
 }

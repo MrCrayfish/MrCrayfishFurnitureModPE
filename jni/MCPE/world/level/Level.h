@@ -38,7 +38,7 @@ public:
 	bool isMultiLevel;						// 12
 	char filler1[47];						// 13
 	std::unordered_set<Player *> _players;	// 60
-
+	static Level* level;
 public:
 	Level(Minecraft &, std::unique_ptr<LevelStorage>, const std::string &, const LevelSettings &, bool);
 	virtual ~Level();
@@ -73,6 +73,7 @@ public:
 	Player *getRandomPlayer();
 	Player *getNearestPlayer(Entity *, float);
 	Player *getNearestPlayer(float, float, float, float);
+	void playSound(float, float, float, std::string const&, float, float);
 	long getTime() const;
 	void setTime(long);
 	void setNightMode(bool);

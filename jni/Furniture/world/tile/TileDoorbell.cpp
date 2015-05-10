@@ -20,10 +20,14 @@ const TextureUVCoordinateSet& TileDoorbell::getTexture(signed char side, int dat
 }
 
 bool TileDoorbell::use(Player* player, int x, int y, int z) {
-	//Level::level->playSound(x, y, z, "doorbell", 100, 100);
+	Level::level->playSound(x, y, z, "fire.fire", 100, 100);
 	return true;
 }
 
 int TileDoorbell::getResource(int data, Random* rand) {
 	return ItemDoorbell::_id;
+}
+
+int TileDoorbell::getResourceCount(Random* rand) {
+	return 1;
 }
