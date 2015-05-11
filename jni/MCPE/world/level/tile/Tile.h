@@ -87,7 +87,6 @@ public:
 	virtual void getCarriedTexture(signed char, int); // 13
 	virtual AABB* getAABB(TileSource*, int, int, int, AABB&, int, bool, int); // 14
 	virtual void addAABBs(TileSource*, int, int, int, AABB const*, std::vector<AABB, std::allocator<AABB> >&); // 15
-	virtual AABB* getTileAABB(TileSource*, int, int, int, AABB&); // 16
 	virtual bool isPathfindable(TileSource*, int, int, int); // 17
 	virtual bool mayPick(); // 18
 	virtual bool mayPick(int, bool); // 19
