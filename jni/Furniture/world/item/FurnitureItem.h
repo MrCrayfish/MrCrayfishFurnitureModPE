@@ -11,6 +11,8 @@ public:
 	static FurnitureItem* itemToilet;
 	static FurnitureItem* itemCabinet;
 	static FurnitureItem* itemDoorbell;
+     static FurnitureItem* itemBin;
+     static FurnitureItem* itemLamp;
 
 	FurnitureItem(int);
 };
