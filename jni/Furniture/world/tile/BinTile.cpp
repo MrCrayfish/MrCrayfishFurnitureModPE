@@ -1,5 +1,4 @@
 #include "BinTile.h"
-#include "../../../MCPE/world/level/Level.h"
 
 int BinTile::_id = 206;
 

@@ -18,6 +18,7 @@
 #include "Furniture/render/tile/renderers/CabinetRenderer.h"
 #include "Furniture/render/tile/renderers/DoorbellRenderer.h"
 #include "Furniture/render/tile/renderers/BinRenderer.h"
+#include "Furniture/render/tile/renderers/LampRenderer.h"
 #include "Furniture/world/tile/FurnitureTile.h"
 #include "Furniture/world/tile/TableTile.h"
 #include "Furniture/world/tile/ChairTile.h"
@@ -25,6 +26,7 @@
 #include "Furniture/world/tile/CabinetTile.h"
 #include "Furniture/world/tile/DoorbellTile.h"
 #include "Furniture/world/tile/BinTile.h"
+#include "Furniture/world/tile/LampTile.h"
 #include "Furniture/world/item/FurnitureItem.h"
 #include "Furniture/world/item/TableItem.h"
 #include "Furniture/world/item/ChairItem.h"
@@ -32,6 +34,7 @@
 #include "Furniture/world/item/CabinetItem.h"
 #include "Furniture/world/item/DoorbellItem.h"
 #include "Furniture/world/item/BinItem.h"
+#include "Furniture/world/item/LampItem.h"
 #include "Furniture/world/item/material/ItemMaterial.h"
 #include "Furniture/world/tile/attributes/FurnitureTileAttributes.h"
 
@@ -51,6 +54,7 @@ void initRenderers() {
 	RenderDispatcher::registerRenderer(CabinetTile::_id, new CabinetRenderer());
 	RenderDispatcher::registerRenderer(DoorbellTile::_id, new DoorbellRenderer());
      RenderDispatcher::registerRenderer(BinTile::_id, new BinRenderer());
+     RenderDispatcher::registerRenderer(LampTile::_id, new LampRenderer());
 }
 
 static void (*_Tile$initTiles)();
@@ -68,6 +72,7 @@ static void Tile$initTiles() {
 	FurnitureTile::tileCabinet = new CabinetTile(CabinetTile::_id, &Material::wood);
 	FurnitureTile::tileDoorbell = new DoorbellTile(DoorbellTile::_id, &Material::wood);
      FurnitureTile::tileBin = new BinTile(BinTile::_id, &Material::metal);
+     FurnitureTile::tileLamp = new LampTile(LampTile::_id, &Material::stone);
 	initRenderers();
 }
 
@@ -81,6 +86,7 @@ static void Item$initItems() {
 	FurnitureItem::itemCabinet = new CabinetItem(CabinetItem::_id);
 	FurnitureItem::itemDoorbell = new DoorbellItem(DoorbellItem::_id);
      FurnitureItem::itemBin = new BinItem(BinItem::_id);
+     FurnitureItem::itemLamp = new LampItem(LampItem::_id);
 
 	_Item$initItems();
 }
@@ -97,6 +103,7 @@ static void Item$initCreativeItems() {
 	Item::addCreativeItem(FurnitureItem::itemCabinet, 0);
 	Item::addCreativeItem(FurnitureItem::itemDoorbell, 0);
      Item::addCreativeItem(FurnitureItem::itemBin, 0);
+     Item::addCreativeItem(FurnitureItem::itemLamp, 0);
 }
 
 static std::string (*_I18n$get)(std::string const&, std::vector<std::string, std::allocator<std::string>> const&);
