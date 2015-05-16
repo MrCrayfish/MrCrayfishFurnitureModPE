@@ -59,8 +59,8 @@ void initRenderers() {
 	RenderDispatcher::registerRenderer(ToiletTile::_id, new ToiletRenderer());
 	RenderDispatcher::registerRenderer(CabinetTile::_id, new CabinetRenderer());
 	RenderDispatcher::registerRenderer(DoorbellTile::_id, new DoorbellRenderer());
-        RenderDispatcher::registerRenderer(BinRenderer::_id, new BinRenderer());
-        RenderDispatcher::registerRenderer(LampRenderer::_id, new LampRenderer());
+        RenderDispatcher::registerRenderer(BinTile::_id, new BinRenderer());
+        RenderDispatcher::registerRenderer(LampTile::_id, new LampRenderer());
 }
 
 static void (*_Tile$initTiles)();
@@ -92,7 +92,7 @@ static void Item$initItems() {
 	FurnitureItem::itemToilet = new ToiletItem(ToiletItem::_id);
 	FurnitureItem::itemCabinet = new CabinetItem(CabinetItem::_id);
 	FurnitureItem::itemDoorbell = new DoorbellItem(DoorbellItem::_id);
-        FurnitureItem::itemBin = new BinItem(LampItem::_id);
+        FurnitureItem::itemBin = new BinItem(BinItem::_id);
         FurnitureItem::itemLamp = new LampItem(LampItem::_id);
 
 	_Item$initItems();

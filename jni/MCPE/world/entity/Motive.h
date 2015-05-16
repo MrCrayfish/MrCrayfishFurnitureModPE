@@ -10,6 +10,7 @@ public:
 
 	static std::vector<const Motive*> getAllMotivesAsList();
 	static const Motive* getMotiveByName(const std::string&);
+     static void initCustomMotives();
 
 	const std::string name;
 
