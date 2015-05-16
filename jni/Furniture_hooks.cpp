@@ -61,9 +61,9 @@ void initRenderers() {
 	RenderDispatcher::registerRenderer(ToiletTile::_id, new ToiletRenderer());
 	RenderDispatcher::registerRenderer(CabinetTile::_id, new CabinetRenderer());
 	RenderDispatcher::registerRenderer(DoorbellTile::_id, new DoorbellRenderer());
-        RenderDispatcher::registerRenderer(BinTile::_id, new BinRenderer());
-        RenderDispatcher::registerRenderer(LampTile::_id, new LampRenderer());
-        RenderDispatcher::registerRenderer(OvenTile::_id, new OvenRenderer());
+       RenderDispatcher::registerRenderer(BinTile::_id, new BinRenderer());
+       RenderDispatcher::registerRenderer(LampTile::_id, new LampRenderer());
+       RenderDispatcher::registerRenderer(OvenTile::_id, new OvenRenderer());
 }
 
 static void (*_Tile$initTiles)();
@@ -80,9 +80,9 @@ static void Tile$initTiles() {
 	FurnitureTile::tileToilet = new ToiletTile(ToiletTile::_id, &Material::stone);
 	FurnitureTile::tileCabinet = new CabinetTile(CabinetTile::_id, &Material::wood);
 	FurnitureTile::tileDoorbell = new DoorbellTile(DoorbellTile::_id, &Material::wood);
-        FurnitureTile::tileBin = new BinTile(BinTile::_id, &Material::metal);
-        FurnitureTile::tileLamp = new LampTile(LampTile::_id, &Material::stone);
-        FurnitureTile::tileOven = new OvenTile(OvenTile::_id, &Material::metal);
+       FurnitureTile::tileBin = new BinTile(BinTile::_id, &Material::metal);
+       FurnitureTile::tileLamp = new LampTile(LampTile::_id, &Material::stone);
+       FurnitureTile::tileOven = new OvenTile(OvenTile::_id, &Material::metal);
     
 	initRenderers();
 }
@@ -96,9 +96,9 @@ static void Item$initItems() {
 	FurnitureItem::itemToilet = new ToiletItem(ToiletItem::_id);
 	FurnitureItem::itemCabinet = new CabinetItem(CabinetItem::_id);
 	FurnitureItem::itemDoorbell = new DoorbellItem(DoorbellItem::_id);
-        FurnitureItem::itemBin = new BinItem(BinItem::_id);
-        FurnitureItem::itemLamp = new LampItem(LampItem::_id);
-        FurnitureItem::itemOven = new OvenItem(OvenItem::_id);
+       FurnitureItem::itemBin = new BinItem(BinItem::_id);
+       FurnitureItem::itemLamp = new LampItem(LampItem::_id);
+       FurnitureItem::itemOven = new OvenItem(OvenItem::_id);
 
 	_Item$initItems();
 }
@@ -114,9 +114,9 @@ static void Item$initCreativeItems() {
 	Item::addCreativeItem(FurnitureItem::itemToilet, 0);
 	Item::addCreativeItem(FurnitureItem::itemCabinet, 0);
 	Item::addCreativeItem(FurnitureItem::itemDoorbell, 0);
-        Item::addCreativeItem(FurnitureItem::itemBin, 0);
-        Item::addCreativeItem(FurnitureItem::itemLamp, 0);
-        Item::addCreativeItem(FurnitureItem::itemOven, 0);
+       Item::addCreativeItem(FurnitureItem::itemBin, 0);
+       Item::addCreativeItem(FurnitureItem::itemLamp, 0);
+       Item::addCreativeItem(FurnitureItem::itemOven, 0);
 }
 
 static std::string (*_I18n$get)(std::string const&, std::vector<std::string, std::allocator<std::string>> const&);
@@ -139,7 +139,7 @@ static std::string I18n$get(std::string const& key, std::vector<std::string, std
 	if(key == "item.ovenItem.name") return "Oven";
 	if(key == "item.blenderItem.name") return "Blender";
 	if(key == "item.lampItem.name") return "Lamp";
-        if(key == "item.binItem.name") return "Bin";
+       if(key == "item.binItem.name") return "Bin";
 	
 	return _I18n$get(key, a);
 }
@@ -154,9 +154,9 @@ static bool LiquidTileDynamic$_isWaterBlocking(LiquidTileDynamic* self, TileSour
 		tile == FurnitureTile::tileToilet ||
 		tile == FurnitureTile::tileCabinet ||
 		tile == FurnitureTile::tileDoorbell ||
-                tile == FurnitureTile::tileBin ||
-                tile == FurnitureTile::tileLamp ||
-                tile == FurnitureTile::tileOven)
+               tile == FurnitureTile::tileBin ||
+               tile == FurnitureTile::tileLamp ||
+               tile == FurnitureTile::tileOven)
 			return true;
 	
 	return _LiquidTileDynamic$_isWaterBlocking(self, region, pos);
