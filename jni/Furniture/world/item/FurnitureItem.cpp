@@ -7,6 +7,8 @@ FurnitureItem* FurnitureItem::itemChairStone = NULL;
 FurnitureItem* FurnitureItem::itemToilet = NULL;
 FurnitureItem* FurnitureItem::itemCabinet = NULL;
 FurnitureItem* FurnitureItem::itemDoorbell = NULL;
+FurnitureItem* FurnitureItem::itemBin = NULL;
+FurnitureItem* FurnitureItem::itemLamp = NULL;
 
 FurnitureItem::FurnitureItem(int id) : Item(id - 256) {
 	creativeCategory = 4;
