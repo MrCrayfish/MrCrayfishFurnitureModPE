@@ -8,7 +8,7 @@ OvenTile::OvenTile(int id, Material const* material) : RotatableTile(id, materia
 	setNameId("tileOven");
 	setSoundType(Tile::SOUND_METAL);
 	tex = getTextureUVCoordinateSet("quartz_block", 0);
-	secondary_tex = getTextureUVCoordinateSet("iron_block", 0);
+	secondary_tex = getTextureUVCoordinateSet("stone", 0);
 	terciary_tex = getTextureUVCoordinateSet("obsidian", 0);
 }
 
