@@ -3,6 +3,7 @@
 #include <android/log.h>
 #include <stdlib.h>
 #include <substrate.h>
+#include <vector>
 
 #include "MCPE/world/level/tile/Tile.h"
 #include "MCPE/world/level/tile/LiquidTileDynamic.h"
@@ -10,6 +11,7 @@
 #include "MCPE/world/item/Item.h"
 #include "MCPE/client/renderer/tile/TileTessellator.h"
 #include "MCPE/locale/I18n.h"
+#include "MCPE/world/entity/Motive.h"
 
 #include "Furniture/render/tile/RenderDispatcher.h"
 #include "Furniture/render/tile/renderers/ChairRenderer.h"
@@ -39,6 +41,10 @@
 #include "Furniture/world/tile/attributes/FurnitureTileAttributes.h"
 
 
+void initMod() {
+	Motive::initCustomMotives();
+}
+
 static void (*_TileTessellator$tessellateInWorld)(TileTessellator*, Tile*, const TilePos&, bool);
 static void TileTessellator$tessellateInWorld(TileTessellator* self, Tile* tile, const TilePos& pos, bool b) {
 	if(!RenderDispatcher::dispatch(tile->id, pos, tile, self))
@@ -53,8 +59,8 @@ void initRenderers() {
 	RenderDispatcher::registerRenderer(ToiletTile::_id, new ToiletRenderer());
 	RenderDispatcher::registerRenderer(CabinetTile::_id, new CabinetRenderer());
 	RenderDispatcher::registerRenderer(DoorbellTile::_id, new DoorbellRenderer());
-       RenderDispatcher::registerRenderer(BinTile::_id, new BinRenderer());
-       RenderDispatcher::registerRenderer(LampTile::_id, new LampRenderer());
+        RenderDispatcher::registerRenderer(BinRenderer::_id, new BinRenderer());
+        RenderDispatcher::registerRenderer(LampRenderer::_id, new LampRenderer());
 }
 
 static void (*_Tile$initTiles)();
@@ -71,8 +77,9 @@ static void Tile$initTiles() {
 	FurnitureTile::tileToilet = new ToiletTile(ToiletTile::_id, &Material::stone);
 	FurnitureTile::tileCabinet = new CabinetTile(CabinetTile::_id, &Material::wood);
 	FurnitureTile::tileDoorbell = new DoorbellTile(DoorbellTile::_id, &Material::wood);
-       FurnitureTile::tileBin = new BinTile(BinTile::_id, &Material::metal);
-       FurnitureTile::tileLamp = new LampTile(LampTile::_id, &Material::stone);
+        FurnitureTile::tileBin = new BinTile(BinTile::_id, &Material::metal);
+        FurnitureTile::tileLamp = new LampTile(LampTile::_id, &Material::stone);
+    
 	initRenderers();
 }
 
@@ -85,8 +92,8 @@ static void Item$initItems() {
 	FurnitureItem::itemToilet = new ToiletItem(ToiletItem::_id);
 	FurnitureItem::itemCabinet = new CabinetItem(CabinetItem::_id);
 	FurnitureItem::itemDoorbell = new DoorbellItem(DoorbellItem::_id);
-       FurnitureItem::itemBin = new BinItem(BinItem::_id);
-       FurnitureItem::itemLamp = new LampItem(LampItem::_id);
+        FurnitureItem::itemBin = new BinItem(LampItem::_id);
+        FurnitureItem::itemLamp = new LampItem(LampItem::_id);
 
 	_Item$initItems();
 }
@@ -102,8 +109,8 @@ static void Item$initCreativeItems() {
 	Item::addCreativeItem(FurnitureItem::itemToilet, 0);
 	Item::addCreativeItem(FurnitureItem::itemCabinet, 0);
 	Item::addCreativeItem(FurnitureItem::itemDoorbell, 0);
-       Item::addCreativeItem(FurnitureItem::itemBin, 0);
-       Item::addCreativeItem(FurnitureItem::itemLamp, 0);
+        Item::addCreativeItem(FurnitureItem::itemBin, 0);
+        Item::addCreativeItem(FurnitureItem::itemLamp, 0);
 }
 
 static std::string (*_I18n$get)(std::string const&, std::vector<std::string, std::allocator<std::string>> const&);
@@ -126,8 +133,8 @@ static std::string I18n$get(std::string const& key, std::vector<std::string, std
 	if(key == "item.ovenItem.name") return "Oven";
 	if(key == "item.blenderItem.name") return "Blender";
 	if(key == "item.lampItem.name") return "Lamp";
-       if(key == "item.binItem.name") return "Bin";
-
+        if(key == "item.binItem.name") return "Bin";
+	
 	return _I18n$get(key, a);
 }
 
@@ -141,23 +148,31 @@ static bool LiquidTileDynamic$_isWaterBlocking(LiquidTileDynamic* self, TileSour
 		tile == FurnitureTile::tileToilet ||
 		tile == FurnitureTile::tileCabinet ||
 		tile == FurnitureTile::tileDoorbell ||
-           tile == FurnitureTile::tileBin ||
-           tile == FurnitureTile::tileLamp)
-  
+             tile == FurnitureTile::tileBin ||
+             tile == FurnitureTile::tileLamp)
 			return true;
 	
 	return _LiquidTileDynamic$_isWaterBlocking(self, region, pos);
 }
 
+static std::vector<const Motive*> (*_Motive$getAllMotivesAsList)();
+static std::vector<const Motive*> Motive$getAllMotivesAsList() {
+	std::vector<const Motive*> retval = _Motive$getAllMotivesAsList();
+	retval.push_back(Motive::Furniture);
+	return retval;
+}
+
 
 JNIEXPORT jint JNI_OnLoad(JavaVM* vm, void* reserved) {
-	
+	initMod();
+
 	MSHookFunction((void*) &TileTessellator::tessellateInWorld, (void*) &TileTessellator$tessellateInWorld, (void**) &_TileTessellator$tessellateInWorld);
 	MSHookFunction((void*) &Item::initItems, (void*) &Item$initItems, (void**) &_Item$initItems);
 	MSHookFunction((void*) &Tile::initTiles, (void*) &Tile$initTiles, (void**) &_Tile$initTiles);
 	MSHookFunction((void*) &Item::initCreativeItems, (void*) &Item$initCreativeItems, (void**) &_Item$initCreativeItems);
 	MSHookFunction((void*) &I18n::get, (void*) &I18n$get, (void**) &_I18n$get);
 	MSHookFunction((void*) &LiquidTileDynamic::_isWaterBlocking, (void*) &LiquidTileDynamic$_isWaterBlocking, (void**) &_LiquidTileDynamic$_isWaterBlocking);
+	MSHookFunction((void*) &Motive::getAllMotivesAsList, (void*) &Motive$getAllMotivesAsList, (void**) &_Motive$getAllMotivesAsList);
 
 	return JNI_VERSION_1_2;
 }
