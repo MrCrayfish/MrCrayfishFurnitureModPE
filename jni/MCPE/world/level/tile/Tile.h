@@ -25,7 +25,9 @@ public:
 		float pitch;
 		std::string breakSound;
 		std::string stepSound;
+
 	
+		SoundType() {};
 		SoundType(std::string const&, float, float);
 	};
 
@@ -86,8 +88,7 @@ public:
 	virtual void getTessellatedUVs(); // 12
 	virtual void getCarriedTexture(signed char, int); // 13
 	virtual AABB* getAABB(TileSource*, int, int, int, AABB&, int, bool, int); // 14
-	virtual void addAABBs(TileSource*, int, int, int, AABB const*, std::vector<AABB, std::allocator<AABB> >&); // 15
-	virtual AABB* getTileAABB(TileSource*, int, int, int, AABB&); // 16
+	virtual void addAABBs(TileSource*, int, int, int, AABB const*, std::vector<AABB, std::allocator<AABB>>&); // 15
 	virtual bool isPathfindable(TileSource*, int, int, int); // 17
 	virtual bool mayPick(); // 18
 	virtual bool mayPick(int, bool); // 19
@@ -143,6 +144,7 @@ public:
 	virtual void getSpawnResourcesAuxValue(int); // 72
 	virtual Tile* init(); // 73
 
+	void addAABB(const AABB&, const AABB*, std::vector<AABB, std::allocator<AABB>>&);
 	void popResource(TileSource*, int, int, int, ItemInstance const&);
 	TextureUVCoordinateSet getTextureUVCoordinateSet(const std::string&, int);
 	Tile* setCategory(int);
