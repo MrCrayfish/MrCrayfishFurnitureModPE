@@ -1,8 +1,8 @@
 #include "OvenTile.h"
 
-int OvenTile::_id = 206;
+int OvenTile::_id = 28;
 
-BinTile::OvenTile(int id, Material const* material) : FurnitureTile(id, material) {
+OvenTile::OvenTile(int id, Material const* material) : FurnitureTile(id, material) {
 	tex = getTextureUVCoordinateSet("iron_block", 0);
 	
 	setNameId("tileOven");
