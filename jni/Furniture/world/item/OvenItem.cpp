@@ -3,6 +3,6 @@
 int OvenItem::_id = 511;
 
 OvenItem::OvenItem(int id) : PlaceableItem(id, OvenTile::_id) {
-setNameId("ovenItem");
+setNameID("ovenItem");
 setIcon("apple",0); 
 }
