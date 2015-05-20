@@ -13,6 +13,7 @@ public:
 	static FurnitureItem* itemDoorbell;
 	static FurnitureItem* itemBin;
 	static FurnitureItem* itemLamp;
+        static FurnitureItem* itemOven;
 
 	FurnitureItem(int);
 };
