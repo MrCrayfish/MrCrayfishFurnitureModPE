@@ -9,13 +9,13 @@ void OvenRenderer::render(const TilePos& pos, FurnitureTile* tile, TileTessellat
 	tess->tex1(tess->getLightColor(pos));
 
 	tess->forcedUV = tile->getTextureUVCoordinateSet("quartz_block", 1);
-	this->setRotatedBounds(tess, data, 0.1, 0.0, 0.0, 0.9, 1.0, 1.0);
+	this->setRotatedBounds(tess, data, 0.0, 0.0, 0.1, 1.0, 1.0, 0.9);
 	tess->tessellateBlockInWorld(tile, {x, y, z});
-        this->setRotatedBounds(tess, data, 0.1, 1.0, 0.0, 0.9, 1.2, 0.1);
+        this->setRotatedBounds(tess, data, 0.0, 1.0, 0.1, 0.1, 1.2, 0.9);
 	tess->tessellateBlockInWorld(tile, {x, y, z});
 	
 	tess->forcedUV = tile->getTextureUVCoordinateSet("stone", 0);
-	this->setRotatedBounds(tess, data, 0.2, 0.1, 1.0, 0.8, 0.9, 1.1);
+	this->setRotatedBounds(tess, data, 1.0, 0.1, 0.2, 1.1, 0.9, 0.8);
 	tess->tessellateBlockInWorld(tile, {x, y, z});
 
 //	tess->forcedUV = tile->getTextureUVCoordinateSet("obsidian", 0);
