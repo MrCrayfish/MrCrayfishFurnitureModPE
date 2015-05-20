@@ -16,7 +16,10 @@ void OvenTile::addAABBs(TileSource* region, int x, int y, int z, AABB const* pos
 	addAABB(AABB(0.1F, 0.0F, 0.0F, 0.9F, 1.0F, 1.0F).move(x, y, z), posAABB, pool);
 	addAABB(CollisionHelper::getRotatedCollisionBox(region->getData(x, y, z), 0.1F, 1.0F, 0.0F, 0.9F, 1.2F, 0.1F).move(x, y, z), posAABB, pool);
         addAABB(CollisionHelper::getRotatedCollisionBox(region->getData(x, y, z), 0.2F, 0.1F, 1.0F, 0.8F, 0.9F, 1.1F).move(x, y, z), posAABB, pool);
-        addAABB(CollisionHelper::getRotatedCollisionBox(region->getData(x, y, z), 0.2F, 1.0F, 0.7F, 0.3F, 1.1F, 0.8F).move(x, y, z), posAABB, pool);
+        addAABB(CollisionHelper::getRotatedCollisionBox(region->getData(x, y, z), 0.2F, 1.0F, 0.7F, 0.4F, 1.1F, 0.9F).move(x, y, z), posAABB, pool);
+        addAABB(CollisionHelper::getRotatedCollisionBox(region->getData(x, y, z), 0.6F, 1.0F, 0.7F, 0.8F, 1.1F, 0.9F).move(x, y, z), posAABB, pool);
+        addAABB(CollisionHelper::getRotatedCollisionBox(region->getData(x, y, z), 0.2F, 1.0F, 0.3F, 0.4F, 1.1F, 0.5F).move(x, y, z), posAABB, pool);
+        addAABB(CollisionHelper::getRotatedCollisionBox(region->getData(x, y, z), 0.6F, 1.0F, 0.3F, 0.8F, 1.1F, 0.5F).move(x, y, z), posAABB, pool);
 }
 bool OvenTile::use(Player* player, int x, int y, int z) {
 	return true;
