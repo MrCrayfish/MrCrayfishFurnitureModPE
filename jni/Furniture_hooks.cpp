@@ -141,7 +141,6 @@ static std::string I18n$get(std::string const& key, std::vector<std::string, std
 	if(key == "item.blenderItem.name") return "Blender";
 	if(key == "item.lampItem.name") return "Lamp";
 	if(key == "item.binItem.name") return "Bin";
-        //if(key == "item.ovenItem.name") return "Oven";
 	
 	return _I18n$get(key, a);
 }
@@ -158,7 +157,7 @@ static bool LiquidTileDynamic$_isWaterBlocking(LiquidTileDynamic* self, TileSour
 		tile == FurnitureTile::tileDoorbell ||
 		tile == FurnitureTile::tileBin ||
 		tile == FurnitureTile::tileLamp ||
-                Tile == FurnitureTile::tileOven)
+                tile == FurnitureTile::tileOven)
 			return true;
 	
 	return _LiquidTileDynamic$_isWaterBlocking(self, region, pos);
