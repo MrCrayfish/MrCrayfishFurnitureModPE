@@ -15,6 +15,7 @@ void OvenRenderer::render(const TilePos& pos, FurnitureTile* tile, TileTessellat
         tess->tessellateBlockInWorld(tile, {x, y, z});
 
         //Door
+        tess->forcedUV = tile->getTexture(1, 0);
         tess->setRenderBounds(0.1F, 0.1F, 0.85F, 0.9F, 0.50F, 0.95F);
         tess->tessellateBlockInWorld(tile, {x, y, z});
 
