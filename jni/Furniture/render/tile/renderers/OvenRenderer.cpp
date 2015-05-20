@@ -18,8 +18,10 @@ void OvenRenderer::render(const TilePos& pos, FurnitureTile* tile, TileTessellat
 	this->setRotatedBounds(tess, data, 0.2, 0.1, 1.0, 0.8, 0.9, 1.1);
 	tess->tessellateBlockInWorld(tile, {x, y, z});
 
-//	tess->forcedUV = tile->getTextureUVCoordinateSet("obsidian", 0);
-//	this->setRotatedBounds(tess, data, 0.0, 0.0, 0.0, 1.0, 1.0, 1.0);
+	tess->forcedUV = tile->getTextureUVCoordinateSet("obsidian", 0);
+	this->setRotatedBounds(tess, data, 0.2, 1.0, 0.7, 0.3, 1.1, 0.8);
+	tess->tessellateBlockInWorld(tile, {x, y, z});
+//        this->setRotatedBounds(tess, data, 0.0, 0.0, 0.0, 1.0, 1.0, 1.0);
 //	tess->tessellateBlockInWorld(tile, {x, y, z});
 
 	tess->useForcedUV = false;
