@@ -5,7 +5,7 @@
 
 class OvenItem: public PlaceableItem {
 public:
-        Static int _id;
+        static int _id;
 
         OvenItem(int);
 };
