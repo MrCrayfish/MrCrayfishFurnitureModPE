@@ -7,16 +7,27 @@ void OvenRenderer::render(const TilePos& pos, FurnitureTile* tile, TileTessellat
 	int data = tess->region->getData(x, y, z);
 
 	//Main Block
-	tess->setRenderBounds(0.0F, 0.0F, 0.0F, 1.0F, 0.65F, 0.85F);
+	tess->setRenderBounds(0.1F, 0.0F, 0.0F, 0.9F, 1.0F, 1.0F);
 	tess->tessellateBlockInWorld(tile, {x, y, z});
         
         //Header
-        tess->setRenderBounds(0.0F, 0.65F, 0.0F, 1.0F, 0.9F, 0.1F);
-        tess->tessellateBlockInWorld(tile, {x, y, z});
+        tess->setRenderBounds(0.1F, 1.0F, 0.0F, 0.9F, 1.2F, 0.1F);
+        tess->tessellateBlockInWorld(tile, {x, y, z});        
 
         //Door
         tess->forcedUV = tile->getTexture(1, 0);
-        tess->setRenderBounds(0.1F, 0.1F, 0.85F, 0.9F, 0.50F, 0.95F);
+        tess->setRenderBounds(0.2F, 0.1F, 1.0F, 0.8F, 0.9F, 1.1F);
+        tess->tessellateBlockInWorld(tile, {x, y, z});
+
+        //Stoves
+        tess->forcedUV = tile->getTexture(2, 0);
+        tess->setRenderBounds(0.1F, 0.0F, 0.0F, 0.9F, 1.0F, 1.0F);
+        tess->tessellateBlockInWorld(tile, {x, y, z});
+        tess->setRenderBounds(0.1F, 0.0F, 0.0F, 0.9F, 1.0F, 1.0F);
+        tess->tessellateBlockInWorld(tile, {x, y, z});
+        tess->setRenderBounds(0.1F, 0.0F, 0.0F, 0.9F, 1.0F, 1.0F);
+        tess->tessellateBlockInWorld(tile, {x, y, z});
+        tess->setRenderBounds(0.1F, 0.0F, 0.0F, 0.9F, 1.0F, 1.0F);
         tess->tessellateBlockInWorld(tile, {x, y, z});
 
 	tess->useForcedUV = false;
