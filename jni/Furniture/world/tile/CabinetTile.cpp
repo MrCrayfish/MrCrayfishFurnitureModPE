@@ -26,5 +26,4 @@ int CabinetTile::getResource(int data, Random* rand) {
 
 void CabinetTile::addAABBs(TileSource* region, int x, int y, int z, AABB const* posAABB, std::vector<AABB, std::allocator<AABB>>& pool) {
 	addAABB(AABB(0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F).move(x, y, z), posAABB, pool);
-	addAABB(AABB(0.0625F, 0.0625F, 1.0F, 0.9375F, 0.9375F, 1.05F).move(x, y, z), posAABB, pool);
 }

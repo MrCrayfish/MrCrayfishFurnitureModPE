@@ -22,7 +22,7 @@ void OvenTile::addAABBs(TileSource* region, int x, int y, int z, AABB const* pos
 	addAABB(CollisionHelper::getRotatedCollisionBox(region->getData(x, y, z), 0.5F, 1.0F, 0.6F, 0.7F, 1.1F, 0.8F).move(x, y, z), posAABB, pool);
 }
 bool OvenTile::use(Player* player, int x, int y, int z) {
-	return true;
+	return false;
 }
 
 int OvenTile::getResource(int data, Random* rand) {

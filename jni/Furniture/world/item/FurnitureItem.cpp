@@ -9,6 +9,12 @@ FurnitureItem* FurnitureItem::itemCabinet = NULL;
 FurnitureItem* FurnitureItem::itemDoorbell = NULL;
 FurnitureItem* FurnitureItem::itemBin = NULL;
 FurnitureItem* FurnitureItem::itemLamp = NULL;
+FurnitureItem* FurnitureItem::itemChoppingBoard = NULL;
+FurnitureItem* FurnitureItem::itemToaster = NULL;
+FurnitureItem* FurnitureItem::itemMicrowave = NULL;
+FurnitureItem* FurnitureItem::itemKnife = NULL;
+FurnitureItem* FurnitureItem::itemBarStool = NULL;
+FurnitureItem* FurnitureItem::itemCounter = NULL;
 FurnitureItem* FurnitureItem::itemOven = NULL;
 
 FurnitureItem::FurnitureItem(int id) : Item(id - 256) {
