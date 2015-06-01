@@ -43,4 +43,6 @@ int DoorbellTile::getResource(int data, Random* rand) {
 	return DoorbellItem::_id;
 }
 
-void DoorbellTile::addAABBs(TileSource* region, int x, int y, int z, AABB const* posAABB, std::vector<AABB, std::allocator<AABB>>& pool) {}
+void DoorbellTile::addAABBs(TileSource* region, int x, int y, int z, AABB const* posAABB, std::vector<AABB, std::allocator<AABB>>& pool) {
+	addAABB(CollisionHelper::getRotatedCollisionBox(region->getData(x, y, z), 0.375, 0.25, 0, 0.625, 0.75, 0.1).move(x, y, z), posAABB, pool);
+}
