@@ -3,6 +3,7 @@
 int OvenTile::_id = 28;
 
 OvenTile::OvenTile(int id, Material const* material) : RotatableTile(id, material) {
+        init();
 	Tile::solid[id] = false;
 	Tile::lightBlock[id] = 0;
 
