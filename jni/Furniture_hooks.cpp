@@ -136,7 +136,7 @@ static void Tile$initTiles() {
 	FurnitureTile::tileMicrowave = new MicrowaveTile(MicrowaveTile::_id, &Material::metal);
 	FurnitureTile::tileBarStool = new BarStoolTile(BarStoolTile::_id, &Material::stone);
 	FurnitureTile::tileCounter = new CounterTile(CounterTile::_id, &Material::stone);
-	FurnitureTile::tileCookieJar = new CounterTile(CookieJarTile::_id, &Material::glass);
+	FurnitureTile::tileCookieJar = new CookieJarTile(CookieJarTile::_id, &Material::glass);
 	FurnitureTile::tileOven = new OvenTile(OvenTile::_id, &Material::stone);
 	ALOG("Finished Loading Tiles");
 

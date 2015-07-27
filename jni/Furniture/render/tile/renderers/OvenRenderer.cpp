@@ -21,7 +21,7 @@ void OvenRenderer::render(const TilePos& pos, FurnitureTile* tile, TileTessellat
 	tess->forcedUV = tile->getTextureUVCoordinateSet("obsidian", 0);
 	this->setRotatedBounds(tess, data, 0.5, 1.0, 0.2, 0.7, 1.1, 0.4);
 	tess->tessellateBlockInWorld(tile, {x, y, z});
-	this->setRotatedBounds(tess, data, 0.5, 1.0, 0.2, 0.7, 1.1, 0.4);
+	this->setRotatedBounds(tess, data, 0.5, 1.0, 0.6, 0.7, 1.1, 0.8);
 	tess->tessellateBlockInWorld(tile, {x, y, z});
 	this->setRotatedBounds(tess, data, 0.1, 1.0, 0.2, 0.3, 1.1, 0.4);
 	tess->tessellateBlockInWorld(tile, {x, y, z});
