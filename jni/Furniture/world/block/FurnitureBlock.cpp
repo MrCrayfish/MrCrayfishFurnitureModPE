@@ -21,6 +21,8 @@ FurnitureBlock* FurnitureBlock::blockCookieJar = NULL;
 FurnitureBlock* FurnitureBlock::blockOven = NULL;
 FurnitureBlock* FurnitureBlock::blockPlate = NULL;
 FurnitureBlock* FurnitureBlock::blockTv = NULL;
+FurnitureBlock* FurnitureBlock::blockPrinter = NULL;
+FurnitureBlock* FurnitureBlock::blockComputer = NULL;
 
 FurnitureBlock::FurnitureBlock(const std::string& name, int id, Material const& material) : Block(name, id, material) {
 	ALOG("Loaded FurnitureBlock");
@@ -50,6 +52,8 @@ void FurnitureBlock::registerBlocks() {
 	registerBlock(blockOven);
 	registerBlock(blockPlate);
      registerBlock(blockTv);
+     registerBlock(blockPrinter); 
+     registerBlock(blockComputer);
 	ALOG("Finished Registering Blocks");
 }
 

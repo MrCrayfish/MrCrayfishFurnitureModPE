@@ -26,6 +26,8 @@ public:
 	static FurnitureItem* itemOven;
 	static FurnitureItem* itemPlate;
      static FurnitureItem* itemTv;
+     static FurnitureItem* itemPrinter;
+     static FurnitureItem* itemComputer;
 	
 	FurnitureItem(const std::string&, int);
 

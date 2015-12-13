@@ -33,6 +33,8 @@ public:
 	static FurnitureBlock* blockOven;
 	static FurnitureBlock* blockPlate;
      static FurnitureBlock* blockTv;
+     static FurnitureBlock* blockPrinter;
+     static FurnitureBlock* blockComputer;
 	
 	FurnitureBlock(const std::string&, int, Material const&);
 

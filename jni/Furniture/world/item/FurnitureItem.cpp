@@ -22,6 +22,8 @@ FurnitureItem* FurnitureItem::itemCookieJar = NULL;
 FurnitureItem* FurnitureItem::itemOven = NULL;
 FurnitureItem* FurnitureItem::itemPlate = NULL;
 FurnitureItem* FurnitureItem::itemTv = NULL;
+FurnitureItem* FurnitureItem::itemPrinter = NULL;
+FurnitureItem* FurnitureItem::itemComputer = NULL;
 
 FurnitureItem::FurnitureItem(const std::string& name, int id) : Item(name, id - 256) {
 	creativeCategory = 4;
@@ -50,6 +52,8 @@ void FurnitureItem::registerItems() {
 	registerItem(itemOven);
 	registerItem(itemPlate);
      registerItem(itemTv);
+     registerItem(itemPrinter);
+     registerItem(itemComputer);
 }
 
 void FurnitureItem::registerItem(Item* item) {
