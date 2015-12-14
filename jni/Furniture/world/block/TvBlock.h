@@ -1,9 +1,9 @@
 #pragma once
 
-#include "FurnitureBlock.h"
+#include "RotatableBlock.h"
 #include "../item/TvItem.h"
 
-class TvBlock : public FurnitureBlock {
+class TvBlock : public RotatableBlock {
 public:
 	static int _id;
 	
@@ -11,6 +11,7 @@ public:
 
 	virtual const TextureUVCoordinateSet& getTexture(signed char, int);
 	virtual int getResource(Random&, int, int);
+     virtual bool addCollisionShapes(BlockSource&, const BlockPos&, const AABB*, std::vector<AABB, std::allocator<AABB>>&, Entity*);
 	
 private:
 	TextureUVCoordinateSet secondary_tex;

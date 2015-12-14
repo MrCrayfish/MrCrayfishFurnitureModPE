@@ -35,6 +35,8 @@
 #include "Furniture/render/block/renderers/OvenRenderer.h"
 #include "Furniture/render/block/renderers/PlateRenderer.h"
 #include "Furniture/render/block/renderers/TvRenderer.h"
+#include "Furniture/render/block/renderers/PrinterRenderer.h"
+#include "Furniture/render/block/renderers/ComputerRenderer.h"
 
 /* Blocks */
 #include "Furniture/world/block/FurnitureBlock.h"
@@ -55,6 +57,9 @@
 #include "Furniture/world/block/CookieJarBlock.h"
 #include "Furniture/world/block/OvenBlock.h"
 #include "Furniture/world/block/PlateBlock.h"
+#include "Furniture/world/block/TvBlock.h"
+#include "Furniture/world/block/PrinterBlock.h"
+#include "Furniture/world/block/ComputerBlock.h"
 
 /* Items */
 #include "Furniture/world/item/FurnitureItem.h"
@@ -77,6 +82,8 @@
 #include "Furniture/world/item/OvenItem.h"
 #include "Furniture/world/item/PlateItem.h"
 #include "Furniture/world/item/TvItem.h"
+#include "Furniture/world/item/PrinterItem.h"
+#include "Furniture/world/item/ComputerItem.h"
 
 #include "Furniture/world/item/material/ItemMaterial.h"
 #include "Furniture/world/block/attributes/FurnitureBlockAttributes.h"
@@ -114,6 +121,8 @@ void initRenderers() {
 	RenderDispatcher::registerRenderer(OvenBlock::_id, new OvenRenderer());
 	RenderDispatcher::registerRenderer(PlateBlock::_id, new PlateRenderer());
      RenderDispatcher::registerRenderer(TvBlock::_id, new TvRenderer());
+     RenderDispatcher::registerRenderer(PrinterBlock::_id, new PrinterRenderer());
+     RenderDispatcher::registerRenderer(ComputerBlock::_id, new ComputerRenderer());
 	ALOG("Finished Loading Renders");
 }
 
@@ -147,6 +156,8 @@ static void Block$initBlocks() {
 	FurnitureBlock::blockOven = new OvenBlock(OvenBlock::_id, Material::getMaterial(MaterialType::STONE));
 	FurnitureBlock::blockPlate = new PlateBlock(PlateBlock::_id, Material::getMaterial(MaterialType::DECORATION));
      FurnitureBlock::blockTv = new TvBlock(TvBlock::_id, Material::getMaterial(MaterialType::STONE));
+     FurnitureBlock::blockPrinter = new PrinterBlock(PrinterBlock::_id, Material::getMaterial(MaterialType::STONE));
+     FurnitureBlock::blockComputer = new ComputerBlock(ComputerBlock::_id, Material::getMaterial(MaterialType::STONE));
 	ALOG("Finished Loading Blocks");
 
 	FurnitureBlock::registerBlocks();
@@ -179,6 +190,8 @@ static void Item$initItems() {
 	FurnitureItem::itemOven = new OvenItem(OvenItem::_id);
 	FurnitureItem::itemPlate = new PlateItem(PlateItem::_id);
      FurnitureItem::itemTv = new TvItem(TvItem::_id);
+     FurnitureItem::itemPrinter = new PrinterItem(PrinterItem::_id);
+     FurnitureItem::itemComputer = new ComputerItem(ComputerItem::_id);
 	ALOG("Finished Loading Items");
 
 	FurnitureItem::registerItems();
@@ -213,6 +226,8 @@ static void Item$initCreativeItems() {
 	Item::addCreativeItem(FurnitureItem::itemOven, 0);
 	Item::addCreativeItem(FurnitureItem::itemPlate, 0);
      Item::addCreativeItem(FurnitureItem::itemOven, 0);
+     Item::addCreativeItem(FurnitureItem::itemPrinter, 0);
+     Item::addCreativeItem(FurnitureItem::itemComputer, 0);
 	ALOG("Finished Adding Creative Items");
 }
 

@@ -8,26 +8,26 @@ void TvRenderer::render(const BlockPos& pos, FurnitureBlock& tile, BlockTessella
 
 	tess->forcedUV = tile.getTextureUVCoordinateSet("log", 0);
 
-	tess->setRenderBounds(0.1, 0.0, 0.1, 0.6, 0.1, 0.9);
+	this->setRotatedBounds(tess, data, 0.1F, 0.0F, 0.1F, 0.6F, 0.1F, 0.9F);
      tess->tessellateBlockInWorld(tile, pos);
 
-     tess->setRenderBounds(0.1, 0.7, 0.1, 0.6, 0.8, 0.9);
+     this->setRotatedBounds(tess, data, 0.1F, 0.7F, 0.1F, 0.6F, 0.8F, 0.9F);
      tess->tessellateBlockInWorld(tile, pos);
 
-     tess->setRenderBounds(0.1, 0.1, 0.1, 0.6, 0.7, 0.2);
+     this->setRotatedBounds(tess, data, 0.1F, 0.1F, 0.1F, 0.6F, 0.7F, 0.2F);
      tess->tessellateBlockInWorld(tile, pos);
 
-     tess->setRenderBounds(0.1, 0.1, 0.8, 0.6, 0.7, 0.9);
+     this->setRotatedBounds(tess, data, 0.1F, 0.1F, 0.8F, 0.6F, 0.7F, 0.9F);
      tess->tessellateBlockInWorld(tile, pos);
 
      tess->forcedUV = tile.getTextureUVCoordinateSet("wool", 7);
 
-     tess->setRenderBounds(0.2, 0.1, 0.2, 0.5, 0.7, 0.8);
+     this->setRotatedBounds(tess, data, 0.2F, 0.1F, 0.2F, 0.5F, 0.7F, 0.8F);
      tess->tessellateBlockInWorld(tile, pos);
 
      tess->forcedUV = tile.getTextureUVCoordinateSet("planks", 0);
 
-	tess->setRenderBounds(0.5, 0.07, 0.2, 0.9, 0.7, 0.8);
+	this->setRotatedBounds(tess, data, 0.5F, 0.07F, 0.2F, 0.9F, 0.7F, 0.8F);
      tess->tessellateBlockInWorld(tile, pos);
 
 	tess->useForcedUV = false;

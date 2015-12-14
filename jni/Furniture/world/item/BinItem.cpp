@@ -1,7 +1,7 @@
-#include "BinItem.h"
+#include "ComputerItem.h"
 
-int BinItem::_id = 476;
+int ComputerItem::_id = 476;
 
-BinItem::BinItem(int id) : PlaceableItem("itemBin", id, BinBlock::_id) {
-	setIcon("itembin", 0);
+ComputerItem::ComputerItem(int id) : PlaceableItem("itemComputer", id, ComputerBlock::_id) {
+	setIcon("itemcomputer", 0);
 }
