@@ -3,7 +3,7 @@
 Your favourite Furniture Mod from the PC Edition has now been ported to the Pocket Edition of Minecraft! This mod includes all the furniture which exists on the PC version of the mod. You can now decorate your house like a professional. Create a table and chairs to put in your house, enjoy a nice relaxing time on your couch watching TV. The combinations are endless with this furniture mod!
 
 ## How to Install Mod
-###Requirements:
+### Requirements:
 * You must have an Android phone running 2.3 or higher.
 * You must to have MCPE and BlockLauncher Installed 
 
